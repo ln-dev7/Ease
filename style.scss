@@ -180,6 +180,9 @@ body {
         width: 100px;
         overflow: hidden;
         z-index: 3;
+        @media screen and (max-width: 760px) {
+          display: none;
+        }
         img {
           width: 150px;
           left: 50%;
