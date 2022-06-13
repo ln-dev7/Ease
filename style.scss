@@ -115,9 +115,20 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+        transition: all 0.2s ease-out;
+
+        &.blue{
+            background: #BDDDDD;
+            border-radius: 0;
+        }
 
         div {
+          width: 100%;
+          flex-shrink: 0;
+          padding-left: 50px;
           line-height: 30px;
+          transition: transform 0.2s ease-out, opacity 0.2s ease;
           h2 {
             font-size: 16px;
             span {
@@ -125,21 +136,72 @@ body {
             }
           }
         }
-
-        div:is(:not(.show)) {
-          display: none;
+        
+        & {
+          div:nth-child(1){
+            transform: translateX(0);
+            opacity: 0;
+            &.show {
+              transform: translateX(100%);
+              opacity: 1;
+            }
+          }
+          div:nth-child(2){
+            transform: translateX(-100%);
+            opacity: 0;
+            &.show {
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+          div:nth-child(3){
+            transform: translateX(0);
+            opacity: 0;
+            &.show {
+              transform: translateX(-100%);
+              opacity: 1;
+            }
+          }
         }
       }
       .main-left-img {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        display: flex;
+        align-items: flex-start;
+        width: 100px;
+        overflow: hidden;
         img {
-          position: absolute;
-          top: 0;
-          width: 120px;
+          width: 150px;
           left: 50%;
-          transform: translateX(-50%);
+          transition: transform 0.2s ease-out, opacity 0.2s ease;
         }
-        img:is(:not(.show)) {
-          display: none;
+
+        img:nth-child(1) {
+            transform: translateX(-50%);
+            opacity: 0;
+            &.show {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        img:nth-child(2) {
+            transform: translateX(50%);
+            opacity: 0;
+            &.show {
+                transform: translateX(-100%);
+                opacity: 1;
+            }
+        }
+        img:nth-child(3) {
+            width: 200px;
+            transform: translateX(0);
+            opacity: 0;
+            &.show {
+                transform: translateX(-390%);
+                opacity: 1;
+            }
         }
       }
       .main-left-left {
@@ -217,14 +279,49 @@ body {
     transition: all 0.3s ease-in-out;
     &__img {
       position: absolute;
-      top: -30px;
-      left: 21.5%;
+      top: -60px;
+      left: 14%;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      img:is(:not(.show)) {
-        display: none;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      height: 360px;
+      overflow: hidden;
+      img {
+        transition: transform 0.2s ease-out, opacity 0.2s ease;
+        height: 360px;
       }
+      img:nth-child(1) {
+        transform: translateY(100%);
+        opacity: 0;
+        &.show {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      img:nth-child(2) {
+        transform: translateY(0);
+        opacity: 0;
+        &.show {
+          transform: translateY(-155%);
+          opacity: 1;
+        }
+      }
+      img:nth-child(3) {
+        width: 85px;
+        transform: translateY(-60%);
+        opacity: 0;
+        &.show {
+          transform: translateY(-205%);
+          opacity: 1;
+        }
+      }
+      //   img:is(.show) {
+      //     transform: translateY(0);
+      //   }
+      //   img:is(:not(.show)) {
+      //     transform: translateY(-100%);
+      //   }
     }
     &.dark {
       background: url("./images/bg-dark.png");
